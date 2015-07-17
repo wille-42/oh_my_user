@@ -17,6 +17,9 @@ gem 'turbolinks'
 # Build JSON API
 gem 'jbuilder', '~> 2.0'
 
+# For has_secure_password
+gem 'bcrypt', '~> 3.1.10'
+
 group :development, :test do
   gem 'pry-byebug'
 end
