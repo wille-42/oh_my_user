@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oh My User | Admin</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div>
+      <% unless current_staff.nil? %>
+        <strong><%= current_staff.name %></strong>
+        <%= link_to 'Dashboard', admin_dashboard_path %>
+        <%= link_to 'Logout', admin_logout_path %>
+      <% end %>
+    </div>
+
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
+
+    <%= yield %>
+
+  </body>
+</html>

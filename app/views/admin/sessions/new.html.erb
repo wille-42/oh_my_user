@@ -1,0 +1,13 @@
+<h1>Log In</h1>
+
+<%= form_tag admin_login_path do %>
+  <div>
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name %>
+  </div>
+  <div>
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
+  </div>
+  <div><%= submit_tag "Log In" %></div>
+<% end %>
