@@ -1,19 +1,23 @@
 module Admin
   class RolesController < BaseController
     def index
-      @roles = Role.all
+      authorize Role
+      @roles = policy_scope(Role)
     end
 
     def show
       @role = Role.find(params[:id])
+      authorize @role
     end
 
     def new
       @role = Role.new
+      authorize @role
     end
 
     def create
       @role = Role.new(role_params)
+      authorize @role
       if @role.save
         redirect_to [:admin, @role], notice: 'Role created.'
       else
@@ -23,10 +27,12 @@ module Admin
 
     def edit
       @role = Role.find(params[:id])
+      authorize @role
     end
 
     def update
       @role = Role.find(params[:id])
+      authorize @role
       if @role.update(role_params)
         redirect_to [:admin, @role], notice: 'Role updated.'
       else
@@ -36,6 +42,7 @@ module Admin
 
     def destroy
       @role = Role.find(params[:id])
+      authorize @role
       @role.destroy
       redirect_to admin_roles_path
     end

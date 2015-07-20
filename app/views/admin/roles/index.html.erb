@@ -1,4 +1,4 @@
-<%= link_to 'New Role', new_admin_role_path %>
+<%= link_to 'New Role', new_admin_role_path if policy(Role).create? %>
 
 <table>
   <tr>
@@ -9,9 +9,9 @@
     <tr>
       <td><%= role.name %></td>
       <td>
-        <%= link_to 'Show', admin_role_path(role) %>
-        <%= link_to 'Edit', edit_admin_role_path(role) %>
-        <%= link_to 'Delete', admin_role_path(role), method: :delete %>
+        <%= link_to 'Show', admin_role_path(role) if policy(Role).read? %>
+        <%= link_to 'Edit', edit_admin_role_path(role) if policy(Role).update? %>
+        <%= link_to 'Delete', admin_role_path(role), method: :delete if policy(Role).destroy? %>
       </td>
     </tr>
   <% end %>
