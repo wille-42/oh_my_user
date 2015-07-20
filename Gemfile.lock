@@ -81,6 +81,8 @@ GEM
     pry-byebug (3.1.0)
       byebug (~> 4.0)
       pry (~> 0.10)
+    pundit (1.0.1)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -144,6 +146,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pry-byebug
+  pundit (~> 1.0.1)
   rails (= 4.2.2)
   sass-rails (~> 5.0)
   sqlite3

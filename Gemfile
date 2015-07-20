@@ -20,6 +20,9 @@ gem 'jbuilder', '~> 2.0'
 # For has_secure_password
 gem 'bcrypt', '~> 3.1.10'
 
+# Authorization
+gem 'pundit', '~> 1.0.1'
+
 group :development, :test do
   gem 'pry-byebug'
 end
