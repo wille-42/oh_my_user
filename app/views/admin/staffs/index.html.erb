@@ -1,0 +1,17 @@
+<%= link_to 'New Staff', new_admin_staff_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  <% @staffs.each do |staff| %>
+    <tr>
+      <td><%= staff.name %></td>
+      <td>
+        <%= link_to 'Edit', edit_admin_staff_path(staff) %>
+        <%= link_to 'Delete', admin_staff_path(staff), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

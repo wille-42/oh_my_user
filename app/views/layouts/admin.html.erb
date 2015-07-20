@@ -11,6 +11,7 @@
       <% unless current_staff.nil? %>
         <strong><%= current_staff.name %></strong>
         <%= link_to 'Dashboard', admin_dashboard_path %>
+        <%= link_to 'Staffs', admin_staffs_path %>
         <%= link_to 'Logout', admin_logout_path %>
       <% end %>
     </div>

@@ -1,0 +1,25 @@
+<%= form_for [:admin, staff] do |f| %>
+  <% if staff.errors.any? %>
+    <div>
+      <ul>
+        <% staff.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div><%= f.submit %></div>
+<% end %>
