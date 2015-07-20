@@ -21,5 +21,9 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  <div>
+    <%= f.label :roles %><br />
+    <%= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
+  </div>
   <div><%= f.submit %></div>
 <% end %>

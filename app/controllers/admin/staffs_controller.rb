@@ -2,7 +2,7 @@ module Admin
   class StaffsController < BaseController
     def index
       authorize Staff
-      @staffs = policy_scope(Staff)
+      @staffs = policy_scope(Staff).includes(:roles)
     end
 
     def new
@@ -45,7 +45,7 @@ module Admin
     private
 
     def staff_params
-      params.require(:staff).permit(:name, :password, :password_confirmation)
+      params.require(:staff).permit(:name, :password, :password_confirmation, role_ids: [])
     end
   end
 end

@@ -3,11 +3,13 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Roles</th>
     <th>Actions</th>
   </tr>
   <% @staffs.each do |staff| %>
     <tr>
       <td><%= staff.name %></td>
+      <td><%= staff.roles.collect(&:name).join(', ') %></td>
       <td>
         <%= link_to 'Edit', edit_admin_staff_path(staff) if policy(Staff).update? %>
         <%= link_to 'Delete', admin_staff_path(staff), method: :delete if policy(Staff).destroy? %>
