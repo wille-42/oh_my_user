@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     get :logout, to: 'sessions#destroy', as: :logout
 
     resources :staffs, except: [:show]
+    resources :roles
   end
 end

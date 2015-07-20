@@ -1,0 +1,7 @@
+<h1><%= @role.name %></h1>
+
+<ul>
+  <% @role.permissions.each do |permission| %>
+    <li><%= permission.action %>#<%= permission.resource %></li>
+  <% end %>
+</ul>

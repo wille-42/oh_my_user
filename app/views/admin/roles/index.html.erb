@@ -1,0 +1,18 @@
+<%= link_to 'New Role', new_admin_role_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  <% @roles.each do |role| %>
+    <tr>
+      <td><%= role.name %></td>
+      <td>
+        <%= link_to 'Show', admin_role_path(role) %>
+        <%= link_to 'Edit', edit_admin_role_path(role) %>
+        <%= link_to 'Delete', admin_role_path(role), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

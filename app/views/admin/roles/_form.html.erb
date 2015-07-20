@@ -1,0 +1,32 @@
+<%= form_for [:admin, role] do |f| %>
+  <% if @role.errors.any? %>
+    <div>
+      <ul>
+        <% @role.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :permissions %><br />
+    <% ApplicationPolicy.policies.each do |policy| %>
+      <% resource = policy.resource %>
+      <div>
+        <span><%= resource %></span>
+        <% policy.actions.each do |action| %>
+          <% checked = role.permissions.exists?(action: action, resource: resource) %>
+          <% value = "#{action}##{resource}" %>
+          <%= f.check_box :permissions, { multiple: true, checked: checked }, value, nil %>
+          <%= f.label :permissions, value, value: value %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div><%= f.submit %></div>
+<% end %>
