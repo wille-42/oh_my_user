@@ -1,4 +1,4 @@
-<%= link_to 'New Staff', new_admin_staff_path %>
+<%= link_to 'New Staff', new_admin_staff_path if policy(Staff).create? %>
 
 <table>
   <tr>
@@ -9,8 +9,8 @@
     <tr>
       <td><%= staff.name %></td>
       <td>
-        <%= link_to 'Edit', edit_admin_staff_path(staff) %>
-        <%= link_to 'Delete', admin_staff_path(staff), method: :delete %>
+        <%= link_to 'Edit', edit_admin_staff_path(staff) if policy(Staff).update? %>
+        <%= link_to 'Delete', admin_staff_path(staff), method: :delete if policy(Staff).destroy? %>
       </td>
     </tr>
   <% end %>

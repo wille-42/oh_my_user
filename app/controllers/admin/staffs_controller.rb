@@ -1,15 +1,18 @@
 module Admin
   class StaffsController < BaseController
     def index
-      @staffs = Staff.all
+      authorize Staff
+      @staffs = policy_scope(Staff)
     end
 
     def new
       @staff = Staff.new
+      authorize @staff
     end
 
     def create
       @staff = Staff.new(staff_params)
+      authorize @staff
       if @staff.save
         redirect_to admin_staffs_path, notice: 'Staff created.'
       else
@@ -19,10 +22,12 @@ module Admin
 
     def edit
       @staff = Staff.find(params[:id])
+      authorize @staff
     end
 
     def update
       @staff = Staff.find(params[:id])
+      authorize @staff
       if @staff.update(staff_params)
         redirect_to admin_staffs_path, notice: 'Staff updated.'
       else
@@ -32,6 +37,7 @@ module Admin
 
     def destroy
       @staff = Staff.find(params[:id])
+      authorize @staff
       @staff.destroy
       redirect_to admin_staffs_path
     end
