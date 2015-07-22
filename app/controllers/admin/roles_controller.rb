@@ -2,11 +2,11 @@ module Admin
   class RolesController < BaseController
     def index
       authorize Role
-      @roles = policy_scope(Role)
+      @roles = policy_scope(Role).editable
     end
 
     def show
-      @role = Role.find(params[:id])
+      @role = Role.editable.find(params[:id])
       authorize @role
     end
 
@@ -26,12 +26,12 @@ module Admin
     end
 
     def edit
-      @role = Role.find(params[:id])
+      @role = Role.editable.find(params[:id])
       authorize @role
     end
 
     def update
-      @role = Role.find(params[:id])
+      @role = Role.editable.find(params[:id])
       authorize @role
       if @role.update(role_params)
         redirect_to [:admin, @role], notice: 'Role updated.'
@@ -41,7 +41,7 @@ module Admin
     end
 
     def destroy
-      @role = Role.find(params[:id])
+      @role = Role.editable.find(params[:id])
       authorize @role
       @role.destroy
       redirect_to admin_roles_path

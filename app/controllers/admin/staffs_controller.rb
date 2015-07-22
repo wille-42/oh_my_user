@@ -38,7 +38,9 @@ module Admin
     def destroy
       @staff = Staff.find(params[:id])
       authorize @staff
-      @staff.destroy
+      unless @staff.destroy
+        flash[:alert] = @staff.errors.full_messages.join(', ')
+      end
       redirect_to admin_staffs_path
     end
 

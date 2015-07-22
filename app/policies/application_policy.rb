@@ -84,6 +84,6 @@ class ApplicationPolicy
       action: action,
       resource: record.is_a?(Class) ? record.name : record.class.name
     }
-    user.permissions.exists?(permission)
+    user.has_role?('admin') || user.permissions.exists?(permission)
   end
 end
